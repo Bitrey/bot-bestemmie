@@ -15,7 +15,7 @@ const podioEmbed = dati => {
         .setDescription("La classifica dei più religiosi")
         .addFields(fields)
         .setTimestamp()
-        .setFooter(`Complimenti a ${fields[0].name}!`);
+        .setFooter(`Complimenti a ${fields[fields.length - 1].name}!`);
 };
 
 const podio = message => {
