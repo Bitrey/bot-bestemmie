@@ -1,0 +1,18 @@
+{
+  "name": "sevydiscordbot",
+  "version": "1.0.0",
+  "description": "Il bot bellissimo per il server del nostro SEVYGAMING",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bitrey",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "moment": "^2.25.3",
+    "mongoose": "^5.9.14",
+    "nodemon": "^2.0.4"
+  }
+}
