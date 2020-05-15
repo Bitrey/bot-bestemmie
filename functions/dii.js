@@ -35,10 +35,16 @@ const dii = message => {
             );
         } else {
             try {
+                const length = 30;
                 const fields = foundUser.listaBestemmie.map(v => {
+                    const str = v.messaggio;
+                    const trimmedString =
+                        str.length > length
+                            ? str.substring(0, length - 3) + "..."
+                            : str;
                     return {
                         name: moment(v.date, "X").fromNow(),
-                        value: v.messaggio
+                        value: trimmedString
                     };
                 });
                 asyncMessage.channel.send(embed(fields, foundUser.username));
