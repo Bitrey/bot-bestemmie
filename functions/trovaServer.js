@@ -15,7 +15,7 @@ const embed = guildName => {
             {
                 name: "!dii <persona>",
                 value:
-                    'Scrivi "!dii (Username)>" per vedere le invocazioni di una persona specifica.'
+                    'Scrivi "!dii [Username]" per vedere le invocazioni di una persona specifica.'
             }
         ])
         .setTimestamp()
@@ -23,7 +23,7 @@ const embed = guildName => {
 };
 
 const findServer = (message, callback) => {
-    Bestemmia.findOne({ serverId: message.guild.id }, (err, foundServer) => {
+    Bestemmia.findOne({ server: message.guild.id }, (err, foundServer) => {
         const { guild } = message;
         if (err) {
             message.channel.send("Si è verificato un errore: " + err);

@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const trovaServer = require("./trovaServer");
 
 const podioEmbed = dati => {
     const fields = dati.map(dato => {
@@ -23,24 +24,16 @@ const podio = message => {
         if (!server) {
             return false;
         }
-        server.invocazioni.find({}, (err, dati) => {
-            if (err) {
-                asyncMessage.channel.send(
-                    "Si è verificato un errore nella ricerca"
-                );
-                return false;
-            } else if (dati.length <= 0) {
-                asyncMessage.channel.send("Nessun dato salvato");
-            } else {
-                try {
-                    asyncMessage.channel.send(podioEmbed(dati));
-                } catch (e) {
-                    asyncMessage.channel.send(
-                        `Si è verificato un errore: ${e}`
-                    );
-                }
+        const dati = server.invocazioni;
+        if (dati.length <= 0) {
+            asyncMessage.channel.send("Nessun dato salvato");
+        } else {
+            try {
+                asyncMessage.channel.send(podioEmbed(dati));
+            } catch (e) {
+                asyncMessage.channel.send(`Si è verificato un errore: ${e}`);
             }
-        });
+        }
     });
 };
 
