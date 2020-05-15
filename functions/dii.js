@@ -39,22 +39,24 @@ const dii = message => {
             try {
                 const length = 30;
                 const fields = foundUser.listaBestemmie.map(v => {
-                    let str;
+                    let str = v.messaggio;
 
-                    let totDioLength = 0;
-                    for (parolaSanta of listaSanti) {
-                        const parolaIndex = v.messaggio.indexOf(parolaSanta);
-                        if (parolaIndex > -1) {
-                            str = v.messaggio.slice(
-                                parolaIndex,
-                                v.messaggio.length - parolaIndex - 1
+                    if (str.length > length) {
+                        for (parolaSanta of listaSanti) {
+                            const parolaIndex = v.messaggio.indexOf(
+                                parolaSanta
                             );
-                            break;
+                            if (parolaIndex > -1) {
+                                str =
+                                    v.messaggio.slice(
+                                        parolaIndex,
+                                        v.messaggio.length
+                                    ) || v.messaggio;
+                                break;
+                            }
                         }
                     }
-                    if (totDioLength > 0) {
-                        handleBestemmia(message, totDioLength);
-                    }
+
                     const trimmedString =
                         str.length > length
                             ? str.substring(0, length - 3) + "..."
