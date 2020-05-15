@@ -3,6 +3,8 @@ const moment = require("moment");
 const trovaServer = require("./trovaServer");
 moment.locale("it");
 
+const listaSanti = require(`.,/elementiSanti.json`).paroleSante;
+
 const embed = (fields, username) => {
     return new Discord.MessageEmbed()
         .setColor("#0099ff")
@@ -37,7 +39,22 @@ const dii = message => {
             try {
                 const length = 30;
                 const fields = foundUser.listaBestemmie.map(v => {
-                    const str = v.messaggio;
+                    let str;
+
+                    let totDioLength = 0;
+                    for (parolaSanta of listaSanti) {
+                        const parolaIndex = v.messaggio.indexOf(parolaSanta);
+                        if (parolaIndex > -1) {
+                            str = v.messaggio.slice(
+                                parolaIndex,
+                                v.messaggio.length - parolaIndex - 1
+                            );
+                            break;
+                        }
+                    }
+                    if (totDioLength > 0) {
+                        handleBestemmia(message, totDioLength);
+                    }
                     const trimmedString =
                         str.length > length
                             ? str.substring(0, length - 3) + "..."
