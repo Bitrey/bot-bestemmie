@@ -3,7 +3,7 @@ const moment = require("moment");
 const trovaServer = require("./trovaServer");
 moment.locale("it");
 
-const listaSanti = require(`.,/elementiSanti.json`).paroleSante;
+const listaSanti = require(`../elementiSanti.json`).paroleSante;
 
 const embed = (fields, username) => {
     return new Discord.MessageEmbed()
