@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const Bestemmia = require("../models/bestemmie");
 
 const podioEmbed = dati => {
     const fields = dati.map(dato => {
@@ -20,21 +19,28 @@ const podioEmbed = dati => {
 
 const podio = message => {
     const asyncMessage = message;
-    Bestemmia.find({}, (err, dati) => {
-        if (err) {
-            asyncMessage.channel.send(
-                "Si è verificato un errore nella ricerca"
-            );
+    trovaServer(message, server => {
+        if (!server) {
             return false;
-        } else if (dati.length <= 0) {
-            asyncMessage.channel.send("Nessun dato salvato");
-        } else {
-            try {
-                asyncMessage.channel.send(podioEmbed(dati));
-            } catch (e) {
-                asyncMessage.channel.send(`Si è verificato un errore: ${e}`);
-            }
         }
+        server.invocazioni.find({}, (err, dati) => {
+            if (err) {
+                asyncMessage.channel.send(
+                    "Si è verificato un errore nella ricerca"
+                );
+                return false;
+            } else if (dati.length <= 0) {
+                asyncMessage.channel.send("Nessun dato salvato");
+            } else {
+                try {
+                    asyncMessage.channel.send(podioEmbed(dati));
+                } catch (e) {
+                    asyncMessage.channel.send(
+                        `Si è verificato un errore: ${e}`
+                    );
+                }
+            }
+        });
     });
 };
 
