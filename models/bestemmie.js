@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const moment = require("moment");
 
 const dioSchema = new mongoose.Schema({
     server: { type: String, required: true },
@@ -12,7 +11,7 @@ const dioSchema = new mongoose.Schema({
                     messaggio: { type: String, required: true },
                     date: {
                         type: String,
-                        default: moment(new Date(Date.now())).format("X")
+                        default: (Date.parse(new Date()) / 1000).toString()
                     }
                 }
             ],
@@ -21,7 +20,7 @@ const dioSchema = new mongoose.Schema({
     ],
     date: {
         type: String,
-        default: moment(new Date(Date.now())).format("X")
+        default: (Date.parse(new Date()) / 1000).toString()
     }
 });
 
