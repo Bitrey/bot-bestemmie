@@ -11,7 +11,9 @@ const dioSchema = new mongoose.Schema({
                     messaggio: { type: String, required: true },
                     date: {
                         type: String,
-                        default: (Date.parse(new Date()) / 1000).toString()
+                        default: (
+                            Date.parse(new Date(Date.now())) / 1000
+                        ).toString()
                     }
                 }
             ],
@@ -20,7 +22,7 @@ const dioSchema = new mongoose.Schema({
     ],
     date: {
         type: String,
-        default: (Date.parse(new Date()) / 1000).toString()
+        default: (Date.parse(new Date(Date.now())) / 1000).toString()
     }
 });
 
