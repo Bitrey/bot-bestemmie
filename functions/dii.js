@@ -6,9 +6,14 @@ moment.locale("it");
 const listaSanti = require(`../elementiSanti.json`).paroleSante;
 
 const embed = (fields, username) => {
+    let spliced = false;
+    if (fields.length > 5) {
+        fields.splice(0, fields.length - 5);
+        spliced = true;
+    }
     return new Discord.MessageEmbed()
         .setColor("#0099ff")
-        .setTitle(`Le invocazioni di ${username}`)
+        .setTitle(`Le ${spliced ? "ultime 5 " : ""}invocazioni di ${username}`)
         .setThumbnail("https://i.imgur.com/vPq9eko.png")
         .addFields(fields)
         .setDescription(
@@ -27,9 +32,23 @@ const dii = message => {
         if (!server) {
             return false;
         }
-        const foundUser = server.invocazioni.find(
-            e => e.username == typedUsername
-        );
+        let foundUser;
+        if (!typedUsername) {
+            // If the user hasn't typed a username, display his own stats
+            foundUser = server.invocazioni.find(
+                e => e.username == message.author.username
+            );
+        } else if (message.mentions.users.size > 0) {
+            // Check if mention
+            foundUser = server.invocazioni.find(
+                e => e.username == [...message.mentions.users][0][1].username
+            );
+        } else {
+            // Check if user typed the username
+            foundUser = server.invocazioni.find(
+                e => e.username == typedUsername
+            );
+        }
         if (!foundUser) {
             // Se l'utente non l'ha mai invocato
             asyncMessage.channel.send(

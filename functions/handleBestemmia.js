@@ -38,7 +38,8 @@ const handleBestemmia = (message, dioLength) => {
             } else {
                 // Se sì, pusha il messaggio
                 foundUser.listaBestemmie.push({
-                    messaggio: asyncMessage.content
+                    messaggio: asyncMessage.content,
+                    date: (Date.parse(new Date(Date.now())) / 1000).toString()
                 });
                 foundUser.username = asyncMessage.author.username;
                 foundUser.dioCont += dioLength;

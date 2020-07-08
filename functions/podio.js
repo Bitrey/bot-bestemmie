@@ -8,6 +8,9 @@ const podioEmbed = dati => {
     fields.sort((a, b) => {
         return a.value - b.value;
     });
+    if (fields.length > 3) {
+        fields.splice(0, fields.length - 3);
+    }
     return new Discord.MessageEmbed()
         .setColor("#0099ff")
         .setTitle("Podio")
