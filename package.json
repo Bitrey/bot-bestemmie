@@ -13,6 +13,10 @@
     "dotenv": "^8.2.0",
     "moment": "^2.25.3",
     "mongoose": "^5.9.14",
-    "nodemon": "^2.0.4"
+    "nekos.life": "^1.0.2",
+    "nodemon": "^2.0.4",
+    "pornsearch": "^1.2.0",
+    "random-item": "^3.0.0",
+    "reddit": "^1.1.0"
   }
 }

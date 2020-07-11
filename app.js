@@ -5,6 +5,7 @@ const client = new Discord.Client();
 const handleBestemmia = require("./functions/handleBestemmia");
 const podio = require("./functions/podio");
 const dii = require("./functions/dii");
+const tits = require("./functions/tits");
 
 const botUserId = process.env.BOT_USER_ID;
 const testServerName = "Bitrey Bot Testing";
@@ -28,10 +29,12 @@ client.on(`message`, message => {
         if (msg.startsWith("!podio")) {
             podio(message);
             return false;
-        }
-        if (msg.startsWith("!dii")) {
+        } else if (msg.startsWith("!dii")) {
             dii(message);
             return false;
+        } else if (msg === "sono un comando che la reb non deve sapere") {
+            // } else if (msg.startsWith("!tits")) {
+            tits(message);
         }
         let totDioLength = 0;
         for (parolaSanta of listaSanti) {
