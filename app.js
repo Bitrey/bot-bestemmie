@@ -32,13 +32,14 @@ client.on(`message`, message => {
         } else if (msg.startsWith("!dii")) {
             dii(message);
             return false;
-        } else if (
-            msg === "sono un comando che la reb non deve sapere" ||
-            msg.startsWith("!tits")
-        ) {
-            // } else if (msg.startsWith("!tits")) {
-            tits(message);
         }
+        // else if (
+        //     msg === "sono un comando che la reb non deve sapere" ||
+        //     msg.startsWith("!tits")
+        // ) {
+        //     // } else if (msg.startsWith("!tits")) {
+        //     tits(message);
+        // }
         let totDioLength = 0;
         for (parolaSanta of listaSanti) {
             const dioLength = msg.split(parolaSanta).length - 1;
