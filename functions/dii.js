@@ -51,9 +51,16 @@ const dii = message => {
         }
         if (!foundUser) {
             // Se l'utente non l'ha mai invocato
-            asyncMessage.channel.send(
-                `Non ho trovato nessun "${typedUsername}"!`
-            );
+            if (typedUsername) {
+                asyncMessage.channel.send(
+                    `Non ho trovato nessun "${typedUsername}"! Che non abbia mai invocato il Signore?`
+                );
+            } else {
+                asyncMessage.channel.send(
+                    message.author.username +
+                        ", sei a 0, è tempo che invochi il Signore!"
+                );
+            }
         } else {
             try {
                 const length = 30;
