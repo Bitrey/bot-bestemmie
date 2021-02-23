@@ -53,9 +53,11 @@ client.on(`message`, message => {
         }
 
         // Fa schifo
-        if (msg == "muztika") {
-            message.channel.send("fa schifo", { tts: true });
-        }
+        if (msg == "muztika") message.channel.send("fa schifo", { tts: true });
+        else if (msg == "sevy") message.channel.send("gaming");
+        else if (msg == "reb" || msg == "rebz")
+            message.channel.send(":occhioreb:");
+        else if (msg == "bitrey") message.channel.send(":catt1:");
     }
 });
 
