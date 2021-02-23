@@ -52,12 +52,20 @@ client.on(`message`, message => {
             handleBestemmia(message, totDioLength);
         }
 
+        const occhioreb = message.guild.emojis.cache
+            .find(emoji => emoji.name === "occhioreb")
+            .toString();
+        const catt1 = message.guild.emojis.cache
+            .find(emoji => emoji.name === "catt1")
+            .toString();
+
         // Fa schifo
         if (msg == "muztika") message.channel.send("fa schifo", { tts: true });
         else if (msg == "sevy") message.channel.send("gaming");
         else if (msg == "reb" || msg == "rebz")
-            message.channel.send(":occhioreb:");
-        else if (msg == "bitrey") message.channel.send(":catt1:");
+            message.channel.send(occhioreb || "non trovo l'emoji :(");
+        else if (msg == "bitrey")
+            message.channel.send(catt1 || "non trovo l'emoji :(");
     }
 });
 
