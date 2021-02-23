@@ -105,6 +105,7 @@ client.on(`message`, message => {
         if (msg == "muztika") message.channel.send("fa schifo", { tts: true });
         else if (msg == "sevy") message.channel.send("gaming");
         else if (msg == "seba") message.channel.send("cassa");
+        else if (msg == "97") message.channel.send("m_coltelli");
         else if (msg == "reb" || msg == "rebz")
             message.channel.send(occhioreb || "non trovo l'emoji :(");
         else if (msg == "bitrey")
