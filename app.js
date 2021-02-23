@@ -88,6 +88,18 @@ client.on(`message`, message => {
         const ivan = message.guild.emojis.cache
             .find(emoji => emoji.name === "ivanetor2")
             .toString();
+        const bitrey1 = message.guild.emojis.cache
+            .find(emoji => emoji.name === "bitreywide3")
+            .toString();
+        const bitrey2 = message.guild.emojis.cache
+            .find(emoji => emoji.name === "bitreywide2")
+            .toString();
+        const bitrey3 = message.guild.emojis.cache
+            .find(emoji => emoji.name === "bitreywide1")
+            .toString();
+        const reb = message.guild.emojis.cache
+            .find(emoji => emoji.name === "rebzemote1")
+            .toString();
 
         // Fa schifo
         if (msg == "muztika") message.channel.send("fa schifo", { tts: true });
@@ -101,7 +113,7 @@ client.on(`message`, message => {
             message.channel.send(alepanco || "non trovo l'emoji :(");
         else if (msg == "fiocchetto" || msg == "focchietto")
             message.channel.send(catt7 || "non trovo l'emoji :(");
-        else if (msg == "ff")
+        else if (msg == "ff" || msg == "ale" || msg == "aleff")
             message.channel.send(
                 ff1 ? `${ff1}${ff2}${ff3}` : "non trovo l'emoji :("
             );
@@ -109,10 +121,28 @@ client.on(`message`, message => {
             message.channel.send(jj || "non trovo l'emoji :(");
         else if (msg == "catty")
             message.channel.send(catty || "non trovo l'emoji :(");
-        else if (msg == "furry" || msg == "mrfurry" || msg == "carrisi")
+        else if (
+            msg == "furry" ||
+            msg == "mrfurry" ||
+            msg == "carrisi" ||
+            msg == "signor furry" ||
+            msg == "mr furry"
+        )
             message.channel.send(furry || "non trovo l'emoji :(");
         else if (msg == "andre" || msg == "rxsty")
             message.channel.send(rxsty || "non trovo l'emoji :(");
+        else if (msg == "negro")
+            message.channel.send(
+                bitrey1
+                    ? `${bitrey1}${bitrey2}${bitrey3}`
+                    : "non trovo l'emoji :("
+            );
+        else if (
+            msg == "negro di merda" ||
+            msg == "pezzo di merda" ||
+            msg == "pezzettino di merda"
+        )
+            message.channel.send(reb || "non trovo l'emoji :(");
         else if (
             msg == "ivan" ||
             msg == "iv4n" ||
