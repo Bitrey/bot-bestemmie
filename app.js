@@ -106,6 +106,10 @@ client.on(`message`, message => {
         else if (msg == "sevy") message.channel.send("gaming");
         else if (msg == "seba") message.channel.send("cassa");
         else if (msg == "97") message.channel.send("m_coltelli");
+        else if (msg == "leo" || msg == "oleol" || msg == "olelo")
+            message.channel.send("OLEEEOL");
+        else if (msg == "yaro" || msg.includes("yaruoz"))
+            message.channel.send("YARUOZZ");
         else if (msg == "reb" || msg == "rebz")
             message.channel.send(occhioreb || "non trovo l'emoji :(");
         else if (msg == "bitrey")
